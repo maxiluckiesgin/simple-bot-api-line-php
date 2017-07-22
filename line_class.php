@@ -98,6 +98,17 @@ class LINEBotTiny
 		return json_decode(exec_get('https://api.line.me/v2/bot/profile/'.$userId,$this->channelAccessToken));
        
     }
+	
+	public function leaveGroup($groupId){
+		//return "going away ...";
+try {
+  $result = exec_url('https://api.line.me/v2/bot/group/'.$groupId.'/leave',$this->channelAccessToken,$groupId);
+}catch (Exception $e) {
+    $result = $e->getMessage();
+} 
+return $result;
+
+	}
 
     private function sign($body)
     {
@@ -182,5 +193,3 @@ function exec_url_aja($fullurl)
 		
 			return($returned);
 	}
-	
-
