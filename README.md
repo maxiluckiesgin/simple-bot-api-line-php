@@ -10,4 +10,8 @@ Deployment requirements :
 1. PHP 5.4+
 2. cURL
 
+based on simple bot api by : https://github.com/djsamm88/api-line
+
+- demo : add official account @pof1764r (with @)
+
 
