@@ -227,12 +227,6 @@ $push = array(
 		$client->pushMessage($push);
 
         $psn = $client->leaveGroup($groupId);
-    } else if ($command == '#/mauvoucher') {
-        $ID = $userId;
-        if ($groupId != "") {
-            $ID = $groupId;
-        }
-        getWifiID($client, $ID);
     } else if ($command == '#/img') {
         $hasil = img_search($options);
         $balas = array(
