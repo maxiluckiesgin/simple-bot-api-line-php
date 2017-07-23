@@ -57,24 +57,6 @@ if (count($pesan_datang) > 2) {
     }
 }
 
-function vid_search($keyword) {
-    //kx1y0tJcXeU
-    $uri = 'http://genyoutube.com/watch?v=' . $keyword;
-
-    $response = Unirest\Request::get("$uri");
-    $gre = array();
-    $hasil = str_replace(">", "&gt;", $response->raw_body);
-    $arrays = explode("<", $hasil);
-    $grep = preg_grep('/&mime=video%2Fmp4/i', $arrays);
-    foreach ($grep as $gr) {
-        array_push($gre, $gr);
-    }
-
-    $result = explode('"', $gre[1])[3];
-    return (string) (Unirest\Request::get("$result")->headers['Location']);
-    //return $result;
-}
-
 function img_search($keyword) {
     $uri = 'https://www.google.co.id/search?q=' . $keyword . '&safe=off&source=lnms&tbm=isch';
 
@@ -83,38 +65,6 @@ function img_search($keyword) {
     $hasil = str_replace(">", "&gt;", $response->raw_body);
     $arrays = explode("<", $hasil);
     return explode('"', $arrays[291])[3];
-}
-
-function getWifiID(&$client, $ID) {
-    $wait = array(
-        'to' => $ID,
-        'messages' => array(
-            array(
-                'type' => 'text',
-                'text' => 'Tunggu ya, memang lama...'
-            )
-    ));
-    $client->pushMessage($wait);
-
-    $headers = array('Accept' => '*/*');
-$data = array('voc' => '');
-$body = Unirest\Request\Body::form($data);
-
-$response = Unirest\Request::post('http://widpedia.net/a/voucher/V0C.php', $headers, $body);
-    $body_ = "Voucher \n\n".$response->body;
-    $res = array(
-        'to' => $ID,
-        'messages' => array(
-            array(
-                'type' => 'text',
-                'text' => $response->code
-            ),
-            array(
-                'type' => 'text',
-                'text' => $body_
-            )
-    ));
-    $client->pushMessage($res);
 }
 
 function anime($keyword) {
