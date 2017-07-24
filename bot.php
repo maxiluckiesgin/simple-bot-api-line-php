@@ -151,18 +151,7 @@ if ($message['type'] == 'text') {
             )
         );
     } else if ($command == '#/goaway') {
-$push = array(
-							'to' => $groupId,									
-							'messages' => array(
-								array(
-										'type' => 'text',					
-										'text' => '􀂣'
-									)
-							)
-						);
-						
-		
-		$client->pushMessage($push);
+
 $push = array(
 							'to' => $groupId,									
 							'messages' => array(
